@@ -102,9 +102,12 @@ function! coquille#Launch(...)
 endfunction
 
 function! coquille#Register()
-    hi default CheckedByCoq ctermbg=17 guibg=LightGreen
-    hi default SentToCoq ctermbg=60 guibg=LimeGreen
-    hi link CoqError Error
+    augroup Color
+        autocmd!
+        autocmd ColorScheme * hi default CheckedByCoq ctermbg=17 guibg=LightGreen
+        autocmd ColorScheme * hi default SentToCoq ctermbg=60 guibg=LimeGreen
+        autocmd ColorScheme * hi link CoqError Error
+    augroup END
 
     let b:checked = -1
     let b:sent    = -1
